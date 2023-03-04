@@ -4,6 +4,7 @@ import 'package:clash_of_codes/UI/screens/register.dart';
 import 'package:clash_of_codes/UI/screens/session.dart';
 import 'package:clash_of_codes/UI/screens/signin.dart';
 import 'package:clash_of_codes/UI/screens/splash_screen.dart';
+import 'package:clash_of_codes/UI/screens/chat.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
           '/splash': (context) => const SplashScreen(),
           '/session': (context) => const SessionPage(),
           '/profile': (context) => const ProfilePage(),
+          '/chat': (context) => const MyHomePage(),
         },
       );
     }

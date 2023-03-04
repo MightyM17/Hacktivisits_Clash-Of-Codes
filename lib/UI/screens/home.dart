@@ -1,6 +1,7 @@
 import 'package:clash_of_codes/UI/util/reuuse.dart';
 import 'package:clash_of_codes/UI/widgets/navbar.dart';
 import 'package:clash_of_codes/constants/colors.dart';
+import 'package:clash_of_codes/firestore/managedb.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:clash_of_codes/UI/screens/signin.dart';
@@ -12,6 +13,11 @@ import 'package:swipeable_card_stack/swipeable_card_stack.dart';
 
 import 'dart:developer';
 import 'package:flutter/cupertino.dart';
+import 'package:http/http.dart' as http;
+import 'package:clash_of_codes/UI/util/reuuse.dart';
+import 'package:clash_of_codes/models/model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,24 +29,21 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late DatabaseReference _dbref;
   String uid = (FirebaseAuth.instance.currentUser?.uid).toString();
-  var bookslist = '';
-  var favlist = '';
-
-  @override
-  void initState() {
-    // _loadCards();
-    super.initState();
-    _dbref = FirebaseDatabase(
-            databaseURL:
-                "https://library-task-default-rtdb.asia-southeast1.firebasedatabase.app/")
-        .ref();
-  }
+  var l;
 
   int counter = 4;
 
   @override
   Widget build(BuildContext context) {
+
+    Future fetch(String pref) async {
+      String url = 'http://10.0.2.2:5000/api?pref='+pref;
+      var response = await http.get(Uri.parse(url),);
+      print(response.body); // You should get your result
+    }
+
     String uid = (FirebaseAuth.instance.currentUser?.uid).toString();
+    print(uid);
 
     // card controller
     SwipeableCardSectionController _cardController =

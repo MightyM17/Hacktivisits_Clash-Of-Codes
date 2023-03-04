@@ -6,6 +6,8 @@ import 'package:clash_of_codes/UI/screens/signin.dart';
 import 'package:clash_of_codes/UI/util/reuuse.dart';
 import 'package:clash_of_codes/UI/screens/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 import '../../constants/colors.dart';
 
@@ -22,6 +24,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController _name = TextEditingController();
   TextEditingController _mob = TextEditingController();
   TextEditingController _cpass = TextEditingController();
+  TextEditingController _loc = TextEditingController();
+  TextEditingController _age = TextEditingController();
+  TextEditingController _gen = TextEditingController();
+
   var _error = '';
   var user = FirebaseAuth.instance.currentUser;
 
@@ -92,6 +98,47 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ],
             ),
+                inputText('Location', 'eg: India', _loc, false),
+                RichText(
+                  text: TextSpan(
+                    style: TextStyle(color: Colors.black, fontSize: 16),
+                    children: [
+                      TextSpan(
+                        text: 'Mobile',
+                      ),
+                      WidgetSpan(
+                        child: Transform.translate(
+                          offset: const Offset(0.0, -7.0),
+                          child: Text(
+                            '*',
+                            style: TextStyle(color: Colors.red, fontSize: 11),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 8),
+                // textfield
+                TextField(
+                  controller: _age,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: black),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    hintText: 'eg: 18',
+                    fillColor: Colors.grey[150],
+                    filled: true,
+                  ),
+                ),
+                SizedBox(height: 8,),
+                inputText('Gender', 'eg: Male', _gen, false),
                 inputText('Password', 'eg: #het493', _pass, true),
                 inputText('Confirm Password', 'eg: #het493', _cpass, true),
 
@@ -110,7 +157,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     String uid =
                         (FirebaseAuth.instance.currentUser?.uid).toString();
                     print(_error);
-                    addUser(uid, _name.text, _email.text);
+                    addUser(_name.text, _email.text, uid, _loc.text, int.parse(_age.text), _gen.text, int.parse(_mob.text), [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], []);
                     Navigator.push(context,
                         MaterialPageRoute(builder: (builder) => HomePage()));
                   }).onError((error, stackTrace) {

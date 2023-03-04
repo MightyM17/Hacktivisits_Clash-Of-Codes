@@ -3,6 +3,8 @@ import 'package:clash_of_codes/UI/screens/home.dart';
 import 'package:clash_of_codes/UI/screens/register.dart';
 import 'package:clash_of_codes/UI/util/reuuse.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 import '../../constants/colors.dart';
 
