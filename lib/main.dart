@@ -1,3 +1,4 @@
+import 'UI/screens/onboarding.dart';
 import 'package:clash_of_codes/UI/screens/profile.dart';
 import 'package:clash_of_codes/UI/screens/session.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
       );
     } else {
       return MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Spark',
         theme: ThemeData(
           primarySwatch: Colors.blue,
@@ -41,5 +43,6 @@ class MyApp extends StatelessWidget {
           '/profile': (context) => const ProfilePage(),
         },
       );
+    }
   }
 }

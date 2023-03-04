@@ -1,31 +1,76 @@
+import 'package:clash_of_codes/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-TextField inputText (String text, IconData icon, bool isPass, TextEditingController controller)
-{
-  return TextField(
-    controller: controller,
-    obscureText: isPass,
-    enableSuggestions: isPass,
-    autocorrect: isPass,
-    cursorColor: Colors.white,
-    decoration: InputDecoration(
-      prefixIcon: Icon(
-        icon,
-        color: Colors.black,
+Column inputText(String text, String hintText, TextEditingController controller,
+    bool obscT) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      // heading
+      RichText(
+        text: TextSpan(
+          style: TextStyle(color: Colors.black, fontSize: 16),
+          children: [
+            TextSpan(
+              text: '$text ',
+            ),
+            WidgetSpan(
+              child: Transform.translate(
+                offset: const Offset(0.0, -7.0),
+                child: Text(
+                  '*',
+                  style: TextStyle(color: Colors.red, fontSize: 11),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
-      labelText: text,
-      filled: true,
-    ),
-    keyboardType: isPass ? TextInputType.visiblePassword : TextInputType.emailAddress,
+      SizedBox(height: 8),
+      // textfield
+      TextField(
+        controller: controller,
+        obscureText: obscT,
+        decoration: InputDecoration(
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.white),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: black),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          hintText: '$hintText',
+          fillColor: Colors.grey[150],
+          filled: true,
+        ),
+      ),
+      SizedBox(
+        height: 20,
+      ),
+    ],
   );
 }
 
-ElevatedButton singInUp(BuildContext context, bool isLogin, Function onTap)
-{
-  return ElevatedButton(
-      onPressed:() { onTap(); },
-      child: Text(
-        isLogin ? "Login" : "Sign Up" ,
-      )
+GestureDetector singInUp(BuildContext context, bool isLogin, Function onTap) {
+  return GestureDetector(
+    onTap: () {},
+    child: Container(
+      padding: EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: black,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Center(
+        child: Text(
+          isLogin ? "Login" : "Sign Up",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+        ),
+      ),
+    ),
   );
 }

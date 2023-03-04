@@ -28,37 +28,34 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-
       body: Stack(
         children: [
           PageView(
             controller: _pageController,
             children: [
               Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset('assets/onboarding1.png', height: 350, width: 350,),
-                      Text("Dating made easy", style: GoogleFonts.lato(
-                          textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 28,),
-                        ),
-                      ),
-                      SizedBox(height: 20,),
-                      Text("Filtered people based on your interests", style: GoogleFonts.lato()),
-                    ],
-                ),
-              ),
-              Container(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset('assets/onboarding2.png', height: 350, width: 350,),
-                    Text("Dating made quick", style: GoogleFonts.lato(
-                      textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 28,),
+                    Image.asset(
+                      'assets/onboarding1.png',
+                      height: 350,
+                      width: 350,
                     ),
+                    Text(
+                      "Dating made easy",
+                      style: GoogleFonts.lato(
+                        textStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 28,
+                        ),
+                      ),
                     ),
-                    SizedBox(height: 20,),
-                    Text("You have 24 hours to chat, its a blind ate after all!", style: GoogleFonts.lato()),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text("Filtered people based on your interests",
+                        style: GoogleFonts.lato()),
                   ],
                 ),
               ),
@@ -66,13 +63,52 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset('assets/onboarding3.png', height: 350, width: 350,),
-                    Text("Dating made safe", style: GoogleFonts.lato(
-                      textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 28,),
+                    Image.asset(
+                      'assets/onboarding2.png',
+                      height: 350,
+                      width: 350,
                     ),
+                    Text(
+                      "Dating made quick",
+                      style: GoogleFonts.lato(
+                        textStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 28,
+                        ),
+                      ),
                     ),
-                    SizedBox(height: 20,),
-                    Text("Leave your worries aside and find love <3", style: GoogleFonts.lato()),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                        "You have 24 hours to chat, its a blind date after all!",
+                        style: GoogleFonts.lato()),
+                  ],
+                ),
+              ),
+              Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/onboarding3.png',
+                      height: 350,
+                      width: 350,
+                    ),
+                    Text(
+                      "Dating made safe",
+                      style: GoogleFonts.lato(
+                        textStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 28,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text("Leave your worries aside and find love <3",
+                        style: GoogleFonts.lato()),
                   ],
                 ),
               ),
@@ -93,50 +129,52 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Spacer(flex: 1,),
+                Spacer(
+                  flex: 1,
+                ),
                 AnimatedSmoothIndicator(
                   activeIndex: currentPage.round(),
-                  count:  3,
-                  effect:  WormEffect(
-                      dotWidth:  10.0,
-                      dotHeight:  10.0,
-                      dotColor:  Colors.grey,
-                      activeDotColor:  Colors.indigo
-                  ),
+                  count: 3,
+                  effect: WormEffect(
+                      dotWidth: 10.0,
+                      dotHeight: 10.0,
+                      dotColor: Colors.grey,
+                      activeDotColor: Colors.indigo),
                 ),
-                Spacer(flex: 5,),
+                Spacer(
+                  flex: 5,
+                ),
                 MaterialButton(
-                  height: MediaQuery.of(context).size.width * 0.13,
-                  minWidth: MediaQuery.of(context).size.width * 0.3,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      currentPage != 2
-                          ? _pageController.nextPage(
-                        duration: const Duration(milliseconds: 200),
-                        curve: Curves.easeIn,
-                      )
-                          : Navigator.pushReplacement(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (_, __, ___) => SignUpScreen(),
-                          transitionDuration:
-                          const Duration(milliseconds: 300),
-                          transitionsBuilder: (_, a, __, c) =>
-                              FadeTransition(opacity: a, child: c),
-                        ),
-                      );
-                    }
-                    );
-                  },
-                  child: currentPage != 2
-                      ? const Text('    Next',
-                      style: TextStyle(color: Colors.black))
-                      : Image.asset("assets/spark logo sq.png", height: MediaQuery.of(context).size.width * 0.14)
-                ),
+                    height: MediaQuery.of(context).size.width * 0.13,
+                    minWidth: MediaQuery.of(context).size.width * 0.3,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        currentPage != 2
+                            ? _pageController.nextPage(
+                                duration: const Duration(milliseconds: 200),
+                                curve: Curves.easeIn,
+                              )
+                            : Navigator.pushReplacement(
+                                context,
+                                PageRouteBuilder(
+                                  pageBuilder: (_, __, ___) => SignUpScreen(),
+                                  transitionDuration:
+                                      const Duration(milliseconds: 300),
+                                  transitionsBuilder: (_, a, __, c) =>
+                                      FadeTransition(opacity: a, child: c),
+                                ),
+                              );
+                      });
+                    },
+                    child: currentPage != 2
+                        ? const Text('    Next',
+                            style: TextStyle(color: Colors.black))
+                        : Image.asset("assets/spark logo sq.png",
+                            height: MediaQuery.of(context).size.width * 0.14)),
                 //SizedBox(height: 24)
               ],
             ),
