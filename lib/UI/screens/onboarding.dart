@@ -1,4 +1,5 @@
 import 'package:clash_of_codes/UI/screens/register.dart';
+import 'package:clash_of_codes/UI/screens/signin.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -161,7 +162,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             : Navigator.pushReplacement(
                                 context,
                                 PageRouteBuilder(
-                                  pageBuilder: (_, __, ___) => SignUpScreen(),
+                                  pageBuilder: (_, __, ___) => SignInScreen(),
                                   transitionDuration:
                                       const Duration(milliseconds: 300),
                                   transitionsBuilder: (_, a, __, c) =>

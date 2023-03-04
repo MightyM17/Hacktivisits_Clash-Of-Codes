@@ -20,18 +20,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Spark',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      initialRoute: '/splash',
-      routes: {
-        '/splash': (context) => const SplashScreen(),
-        '/session': (context) => const SessionPage(),
-        '/profile': (context) => const ProfilePage(),
-      },
-    );
+      return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Spark',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        initialRoute: '/splash',
+        routes: {
+          '/splash': (context) => const SplashScreen(),
+          '/session': (context) => const SessionPage(),
+          '/profile': (context) => const ProfilePage(),
+        },
+      );
+    }
   }
-}
