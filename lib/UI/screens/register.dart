@@ -25,16 +25,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   var _error = '';
   var user = FirebaseAuth.instance.currentUser;
 
-  List<Person> personList = [];
-
-  @override
-  void initState() {
-    super.initState();
-    _fbref = FirebaseDatabase(
-        databaseURL:
-            "https://library-task-default-rtdb.asia-southeast1.firebasedatabase.app/");
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
