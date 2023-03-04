@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "660972869846",
+    "project_id": "clash-of-codes-e93eb",
+    "storage_bucket": "clash-of-codes-e93eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:660972869846:android:d14c7b6981287131ae1177",
+        "android_client_info": {
+          "package_name": "com.example.clash_of_codes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "660972869846-cjbfblfv1u08g2uhb3hlo633f2trts4j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.clash_of_codes",
+            "certificate_hash": "bd9bd4d7dd099fc87b6866d048351138d798d5a4"
+          }
+        },
+        {
+          "client_id": "660972869846-71sv3hav7jmvs1mcf8dj0t4t1kqep0ku.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBolnxg2tg_O_ewy2gh5r1k9QvYXZ7TAyw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "660972869846-71sv3hav7jmvs1mcf8dj0t4t1kqep0ku.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
