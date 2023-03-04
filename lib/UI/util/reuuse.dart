@@ -52,9 +52,9 @@ Column inputText(String text, String hintText, TextEditingController controller,
   );
 }
 
-GestureDetector singInUp(BuildContext context, bool isLogin, Function onTap) {
+GestureDetector singInUp(BuildContext context, bool isLogin, Function clickMe) {
   return GestureDetector(
-    onTap: () {},
+    onTap:() { clickMe(); },
     child: Container(
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(

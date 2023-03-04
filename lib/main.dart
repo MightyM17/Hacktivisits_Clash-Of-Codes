@@ -33,20 +33,5 @@ class MyApp extends StatelessWidget {
           '/profile': (context) => const ProfilePage(),
         },
       );
-    } else {
-      return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Spark',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        initialRoute: '/home',
-        routes: {
-          '/home': (context) => const OnboardingScreen(),
-          '/session': (context) => const SessionPage(),
-          '/profile': (context) => const ProfilePage(),
-        },
-      );
     }
   }
-}

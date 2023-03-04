@@ -25,16 +25,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   var _error = '';
   var user = FirebaseAuth.instance.currentUser;
 
-  List<Person> personList = [];
-
-  @override
-  void initState() {
-    super.initState();
-    _fbref = FirebaseDatabase(
-        databaseURL:
-            "https://library-task-default-rtdb.asia-southeast1.firebasedatabase.app/");
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,16 +35,65 @@ class _SignUpScreenState extends State<SignUpScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                SizedBox(height: 60),
                 // logo
                 Padding(
                   padding: const EdgeInsets.fromLTRB(24, 0, 48, 0),
                   child: Image.asset('assets/spark logo rect.png'),
                 ),
-                SizedBox(height: 60),
+                SizedBox(height: 40),
 
-                // inputText('Name', 'eg: Het Nakhua', controller, obscT),
+                inputText('Name', 'eg: Het Nakhua', _name, false),
                 inputText('Email', 'eg: hetnakhua@gmail.com', _email, false),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // heading
+                RichText(
+                  text: TextSpan(
+                    style: TextStyle(color: Colors.black, fontSize: 16),
+                    children: [
+                      TextSpan(
+                        text: 'Mobile',
+                      ),
+                      WidgetSpan(
+                        child: Transform.translate(
+                          offset: const Offset(0.0, -7.0),
+                          child: Text(
+                            '*',
+                            style: TextStyle(color: Colors.red, fontSize: 11),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 8),
+                // textfield
+                TextField(
+                  controller: _mob,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: black),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    hintText: 'eg: 1234567890',
+                    fillColor: Colors.grey[150],
+                    filled: true,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+              ],
+            ),
                 inputText('Password', 'eg: #het493', _pass, true),
+                inputText('Confirm Password', 'eg: #het493', _cpass, true),
 
                 SizedBox(
                   height: 40,
@@ -71,11 +110,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     String uid =
                         (FirebaseAuth.instance.currentUser?.uid).toString();
                     print(_error);
-                    //createDB(_fbref.ref("Users/$uid"));
+                    addUser(uid, _name.text, _email.text);
                     Navigator.push(context,
                         MaterialPageRoute(builder: (builder) => HomePage()));
                   }).onError((error, stackTrace) {
-                    setState(() => _error = error.toString());
+                    setState(() => _error = error.toString().substring(error.toString().indexOf(']')+2));
                     print(_error);
                   });
                 }),
