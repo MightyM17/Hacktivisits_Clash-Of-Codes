@@ -1,7 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:clash_of_codes/models/model.dart';
-//import 'package:clash_of_codes/realtime/managedb.dart';
+import 'package:clash_of_codes/firestore/managedb.dart';
 import 'package:clash_of_codes/UI/screens/signin.dart';
 import 'package:clash_of_codes/UI/util/reuuse.dart';
 import 'package:clash_of_codes/UI/screens/home.dart';
@@ -19,8 +19,10 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController _pass = TextEditingController();
   TextEditingController _email = TextEditingController();
+  TextEditingController _name = TextEditingController();
+  TextEditingController _mob = TextEditingController();
+  TextEditingController _cpass = TextEditingController();
   var _error = '';
-  late FirebaseDatabase _fbref;
   var user = FirebaseAuth.instance.currentUser;
 
   List<Person> personList = [];

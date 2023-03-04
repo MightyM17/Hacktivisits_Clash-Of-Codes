@@ -1,18 +1,20 @@
-class Person{
-  String? key;
-  PersonData? personData;
+class User {
+  final String id;
+  final String name;
+  final String email;
+  var pref = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
-  Person({this.key,this.personData});
-}
+  User({
+    required this.id,
+    required this.name,
+    required this.email,
+    //required this.pref,
+  });
 
-class PersonData{
-  Map<String, String>? books;
-  Map<String, String>? fav;
-
-  PersonData({this.books, this.fav});
-
-  PersonData.fromJson(Map<dynamic,dynamic> json){
-    books = json["books"];
-    books = json["fav"];
-  }
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'name': name,
+    'email': email,
+    'pref': pref,
+  };
 }

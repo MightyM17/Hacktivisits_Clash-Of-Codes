@@ -1,9 +1,6 @@
 import 'dart:async';
 
 import 'package:clash_of_codes/UI/screens/home.dart';
-//import 'package:clash_of_codes/screens/Provider/provider_screen.dart';
-//import 'package:clash_of_codes/screens/Provider/provider_verification.dart';
-//import 'package:clash_of_codes/stores/user_store.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
