@@ -38,6 +38,7 @@ dependencies:
 
   # navbar
   persistent_bottom_nav_bar: ^5.0.2
+  dot_navigation_bar: ^1.0.1+4
 
   # Firebase
   firebase_core: ^2.7.0

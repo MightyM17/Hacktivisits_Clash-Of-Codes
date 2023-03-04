@@ -80,7 +80,7 @@ GestureDetector singInUp(BuildContext context, bool isLogin, Function clickMe) {
   );
 }
 
-Stack tinder_card(BuildContext context, String imgUrl) {
+Stack spark_card(BuildContext context, String imgUrl) {
   return Stack(
     children: [
       Container(
@@ -98,7 +98,7 @@ Stack tinder_card(BuildContext context, String imgUrl) {
         ),
       ),
       BackdropFilter(
-        filter: new ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
+        filter: new ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
         child: Container(
           width: MediaQuery.of(context).size.width - 48,
           height: MediaQuery.of(context).size.height - 300,
@@ -144,3 +144,4 @@ Stack tinder_card(BuildContext context, String imgUrl) {
     ],
   );
 }
+
