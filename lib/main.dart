@@ -1,3 +1,5 @@
+import 'package:clash_of_codes/UI/screens/profile.dart';
+import 'package:clash_of_codes/UI/screens/session.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -17,13 +19,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    if (FirebaseAuth.instance.currentUser == null){
+    if (FirebaseAuth.instance.currentUser == null) {
       return MaterialApp(
         title: 'Spark',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const OnboardingScreen(),
+        initialRoute: '/home',
+        routes: {
+          '/home': (context) => const OnboardingScreen(),
+          '/session': (context) => const SessionPage(),
+          '/profile': (context) => const ProfilePage(),
+        },
       );
     } else {
       return MaterialApp(
@@ -31,7 +38,12 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const HomePage(),
+        initialRoute: '/home',
+        routes: {
+          '/home': (context) => const OnboardingScreen(),
+          '/session': (context) => const SessionPage(),
+          '/profile': (context) => const ProfilePage(),
+        },
       );
     }
   }
