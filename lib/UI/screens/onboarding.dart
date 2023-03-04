@@ -135,7 +135,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   child: currentPage != 2
                       ? const Text('    Next',
                       style: TextStyle(color: Colors.black))
-                      : Image.asset("assets/spark logo sq.png", height: MediaQuery.of(context).size.width * 0.14)
+                      : Image.asset("assets/get sparked.png", width: MediaQuery.of(context).size.width * 0.25)
                 ),
                 //SizedBox(height: 24)
               ],
