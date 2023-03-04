@@ -3,10 +3,6 @@ import 'package:clash_of_codes/UI/screens/session.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:clash_of_codes/UI/screens/home.dart';
-import 'package:clash_of_codes/UI/screens/onboarding.dart';
-import 'package:clash_of_codes/UI/screens/signin.dart';
-import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,6 +41,5 @@ class MyApp extends StatelessWidget {
           '/profile': (context) => const ProfilePage(),
         },
       );
-    }
   }
 }
