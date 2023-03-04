@@ -38,15 +38,8 @@ class _SignInScreenState extends State<SignInScreen> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (builder) => HomePage()));
                 }).onError((error, stackTrace){
-                  /*
-                    if (e.code == 'user-not-found') {
-                        print('No user found for that email.');
-                    } else if (e.code == 'wrong-password') {
-                      print('Wrong password provided for that user.');
-                    }
-                   */
-                  setState(() => _error = error.toString());
-                  print(_error);
+                  setState(() => _error = error.toString().substring(error.toString().indexOf('] ')+2).toString());
+                  print(error);
                 });
               }),
               SizedBox(height: 20,),
