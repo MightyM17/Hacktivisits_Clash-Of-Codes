@@ -36,6 +36,23 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
+  # Firebase
+  firebase_core: ^2.7.0
+  firebase_auth: ^4.2.9
+  firebase_database: ^10.0.14
+
+  # Firestore
+  cloud_firestore: ^4.4.3
+
+  # Provider
+  provider: ^6.0.5
+
+  # Font
+  google_fonts: ^4.0.3
+
+  # Page dots
+  smooth_page_indicator: ^1.0.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -46,17 +63,6 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
-
-  # Firebase
-  firebase_core: ^2.7.0
-  firebase_auth: ^4.2.9
-  firebase_database: ^10.0.14
-
-  # Provider
-  provider: ^6.0.5
-
-  # Google Sign in
-  google_sign_in: ^6.0.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -70,9 +76,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

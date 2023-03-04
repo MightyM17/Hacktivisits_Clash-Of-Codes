@@ -1,10 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:clash_of_codes/UI/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:clash_of_codes/UI/screens/home.dart';
-import 'package:clash_of_codes/UI/screens/onboarding.dart';
-import 'package:clash_of_codes/UI/screens/signin.dart';
-import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,22 +13,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    if (FirebaseAuth.instance.currentUser == null){
       return MaterialApp(
         title: 'Spark',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const OnboardingScreen(),
+        home: const SplashScreen(),
       );
-    } else {
-      return MaterialApp(
-        title: 'Spark',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const HomePage(),
-      );
-    }
   }
 }
