@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:clash_of_codes/UI/screens/home.dart';
-import 'package:clash_of_codes/UI/screens/signup.dart';
+import 'package:clash_of_codes/UI/screens/register.dart';
 import 'package:clash_of_codes/UI/util/reuuse.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
