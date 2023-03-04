@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:clash_of_codes/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 Column inputText(String text, String hintText, TextEditingController controller,
     bool obscT) {
@@ -54,7 +57,9 @@ Column inputText(String text, String hintText, TextEditingController controller,
 
 GestureDetector singInUp(BuildContext context, bool isLogin, Function clickMe) {
   return GestureDetector(
-    onTap:() { clickMe(); },
+    onTap: () {
+      clickMe();
+    },
     child: Container(
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
@@ -72,5 +77,70 @@ GestureDetector singInUp(BuildContext context, bool isLogin, Function clickMe) {
         ),
       ),
     ),
+  );
+}
+
+Stack tinder_card(BuildContext context, String imgUrl) {
+  return Stack(
+    children: [
+      Container(
+        width: MediaQuery.of(context).size.width - 48,
+        height: MediaQuery.of(context).size.height - 300,
+        // color: blue,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(
+              imgUrl,
+            ),
+            fit: BoxFit.fill,
+          ),
+          borderRadius: BorderRadius.circular(32.0),
+        ),
+      ),
+      BackdropFilter(
+        filter: new ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
+        child: Container(
+          width: MediaQuery.of(context).size.width - 48,
+          height: MediaQuery.of(context).size.height - 300,
+          // color: blue,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: FractionalOffset.topCenter,
+              end: FractionalOffset.bottomCenter,
+              colors: [
+                Colors.grey.withOpacity(0.0),
+                Colors.black,
+              ],
+              stops: [0.0, 1.0],
+            ),
+            borderRadius: BorderRadius.circular(32.0),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Nick Name',
+                  style: GoogleFonts.lato(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 32,
+                      color: Colors.white),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'lorem ipsum aaaaa aaaaaa aaaaa aaaaa aaaaa aaaa aaaaa aaaaaa',
+                  style: GoogleFonts.lato(
+                    fontSize: 16,
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    ],
   );
 }

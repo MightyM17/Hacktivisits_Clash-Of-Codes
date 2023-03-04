@@ -35,6 +35,8 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+
+  # navbar
   persistent_bottom_nav_bar: ^5.0.2
 
   # Firebase
@@ -53,6 +55,9 @@ dependencies:
 
   # Page dots
   smooth_page_indicator: ^1.0.1
+
+  # Swipable cards
+  swipeable_card_stack: 0.0.5
 
 dev_dependencies:
   flutter_test:
