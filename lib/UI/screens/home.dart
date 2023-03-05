@@ -121,6 +121,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     ];
 
     return Scaffold(
+      key: ValueKey<int>(1),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -197,10 +198,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ],
       ),
       // extendBody: true,
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(bottom: 8.0),
-        child: BottomNavBar(),
-      ),
+      bottomNavigationBar: BottomNavBar(iindex: 1,),
     );
   }
 }
