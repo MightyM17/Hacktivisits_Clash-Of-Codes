@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:ui';
 
 import 'package:clash_of_codes/constants/colors.dart';
@@ -173,7 +174,7 @@ Container session_tile(BuildContext context, String name, String time) {
     ),
   );
 }
-var pref;
+List<dynamic> pref=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 String uid = (FirebaseAuth.instance.currentUser?.uid).toString();
 
 Column displayInterests(
