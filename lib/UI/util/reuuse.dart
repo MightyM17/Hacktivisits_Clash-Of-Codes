@@ -4,6 +4,8 @@ import 'package:clash_of_codes/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../screens/chat.dart';
+
 Column inputText(String text, String hintText, TextEditingController controller,
     bool obscT) {
   return Column(
@@ -145,3 +147,27 @@ Stack spark_card(BuildContext context, String imgUrl, var name) {
   );
 }
 
+Container session_tile(BuildContext context, String name, String time) {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(24),
+      color: Colors.grey[100],
+    ),
+    child: ListTile(
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (builder) => MyHomePage()));
+      },
+      title: Text(
+        name,
+        style: GoogleFonts.lato(color: Colors.grey[600]),
+      ),
+      trailing: Text(
+        time,
+        style: GoogleFonts.lato(
+          color: Colors.grey[500],
+        ),
+      ),
+    ),
+  );
+}

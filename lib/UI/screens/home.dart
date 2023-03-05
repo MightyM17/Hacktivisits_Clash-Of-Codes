@@ -122,6 +122,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
     return Scaffold(
       key: ValueKey<int>(1),
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -188,7 +189,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               if (dir == Direction.left) {
                 print('disliked');
               } else if (dir == Direction.right) {
-                addToLiked(options[index].toString());
+                // addToLiked(options[index].toString());
                 print('liked');
               }
             },

@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 
+import '../../constants/colors.dart';
+
 // For the testing purposes, you should probably use https://pub.dev/packages/uuid.
 String randomString() {
   final random = Random.secure();
@@ -21,8 +23,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => const MaterialApp(
-    home: MyHomePage(),
-  );
+        home: MyHomePage(),
+      );
 }
 
 class MyHomePage extends StatefulWidget {
@@ -38,14 +40,27 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    key: ValueKey<int>(0),
-    body: Chat(
-      messages: _messages,
-      onSendPressed: _handleSendPressed,
-      user: _user,
-    ),
-    bottomNavigationBar: BottomNavBar(iindex: 0,),
-  );
+        key: ValueKey<int>(0),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            color: black,
+            onPressed: () {
+              Navigator.pop(context);
+            }
+          ),
+        ),
+        body: Chat(
+          messages: _messages,
+          onSendPressed: _handleSendPressed,
+          user: _user,
+        ),
+        bottomNavigationBar: BottomNavBar(
+          iindex: 0,
+        ),
+      );
 
   void _addMessage(types.Message message) {
     setState(() {

@@ -1,5 +1,8 @@
+import 'package:clash_of_codes/UI/screens/private_info.dart';
+import 'package:clash_of_codes/UI/screens/public_info.dart';
 import 'package:clash_of_codes/UI/widgets/navbar.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:clash_of_codes/UI/widgets/navbar.dart';
 import '../../constants/colors.dart';
@@ -11,12 +14,13 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: ValueKey<int>(3),
-      // backgroundColor: ,
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: Text(
           'Profile',
-          style: TextStyle(
+          style: GoogleFonts.lato(
             color: Colors.white,
+            fontWeight: FontWeight.bold,
           ),
         ),
         centerTitle: true,
@@ -57,22 +61,22 @@ class ProfilePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 20),
-            
+
                   // info heading
                   Padding(
                     padding: const EdgeInsets.fromLTRB(8.0, 0, 0, 0),
                     child: Text(
                       'Info',
-                      style: TextStyle(
+                      style: GoogleFonts.lato(
                         color: black,
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-            
+
                   SizedBox(height: 10),
-            
+
                   // info card
                   Container(
                     decoration: BoxDecoration(
@@ -82,10 +86,15 @@ class ProfilePage extends StatelessWidget {
                     child: Column(
                       children: [
                         ListTile(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (builder) => PublicInfoPage()));
+                          },
                           title: Text(
                             'Public info',
-                            style: TextStyle(color: Colors.grey[600]),
+                            style: GoogleFonts.lato(color: Colors.grey[600]),
                           ),
                           trailing: Icon(
                             Icons.visibility_rounded,
@@ -97,10 +106,15 @@ class ProfilePage extends StatelessWidget {
                           child: Divider(color: Colors.grey[400]),
                         ),
                         ListTile(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (builder) => PrivateInfoPage()));
+                          },
                           title: Text(
                             'Private info',
-                            style: TextStyle(color: Colors.grey[600]),
+                            style: GoogleFonts.lato(color: Colors.grey[600]),
                           ),
                           trailing: Icon(
                             Icons.visibility_off_rounded,
@@ -111,22 +125,22 @@ class ProfilePage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 30),
-            
+
                   // settings heading
                   Padding(
                     padding: const EdgeInsets.fromLTRB(8.0, 0, 0, 0),
                     child: Text(
                       'Settings',
-                      style: TextStyle(
+                      style: GoogleFonts.lato(
                         color: black,
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-            
+
                   SizedBox(height: 10),
-            
+
                   // settings card
                   Container(
                     decoration: BoxDecoration(
@@ -139,7 +153,7 @@ class ProfilePage extends StatelessWidget {
                           onTap: () {},
                           title: Text(
                             'Notifications',
-                            style: TextStyle(color: Colors.grey[600]),
+                            style: GoogleFonts.lato(color: Colors.grey[600]),
                           ),
                           trailing: Icon(
                             Icons.notifications,
@@ -154,7 +168,7 @@ class ProfilePage extends StatelessWidget {
                           onTap: () {},
                           title: Text(
                             'Account',
-                            style: TextStyle(color: Colors.grey[600]),
+                            style: GoogleFonts.lato(color: Colors.grey[600]),
                           ),
                           trailing: Icon(
                             Icons.person_2,
@@ -170,7 +184,9 @@ class ProfilePage extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavBar(iindex: 2,),
+      bottomNavigationBar: BottomNavBar(
+        iindex: 2,
+      ),
     );
   }
 }

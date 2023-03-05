@@ -32,7 +32,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         case 0:
           _child = MyHomePage();
           Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (builder) => MyHomePage()));
+              MaterialPageRoute(builder: (builder) => SessionPage()));
           print("Chat");
           break;
         case 1:
