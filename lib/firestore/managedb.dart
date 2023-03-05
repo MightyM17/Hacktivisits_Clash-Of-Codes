@@ -20,3 +20,14 @@ Future<List<dynamic>> getPref(String id) async {
   );
   return [];
 }
+
+Future<String> getName(String id) async {
+
+  FirebaseFirestore.instance.collection("users").doc(id).get().then(  (DocumentSnapshot doc) {
+    final data = doc.data() as Map<String, dynamic>;
+    print(data['name']);
+  },
+    onError: (e) => print("Error getting document: $e"),
+  );
+  return 'aa';
+}

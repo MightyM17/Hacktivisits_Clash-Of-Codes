@@ -80,7 +80,7 @@ GestureDetector singInUp(BuildContext context, bool isLogin, Function clickMe) {
   );
 }
 
-Stack spark_card(BuildContext context, String imgUrl) {
+Stack spark_card(BuildContext context, String imgUrl, var name) {
   return Stack(
     children: [
       Container(
@@ -122,7 +122,7 @@ Stack spark_card(BuildContext context, String imgUrl) {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Nick Name',
+                  name,
                   style: GoogleFonts.lato(
                       fontWeight: FontWeight.bold,
                       fontSize: 32,
