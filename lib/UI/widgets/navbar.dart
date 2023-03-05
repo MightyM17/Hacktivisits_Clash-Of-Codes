@@ -1,3 +1,4 @@
+import 'package:clash_of_codes/UI/screens/chat.dart';
 import 'package:flutter/material.dart';
 
 import 'package:clash_of_codes/UI/screens/home.dart';
@@ -18,9 +19,17 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   var _selectedTab = _SelectedTab.home;
 
+  var list = [
+    MyHomePage(),
+    HomePage(),
+    ProfilePage(),
+  ];
+
   void _handleIndexChanged(int i) {
     setState(() {
       _selectedTab = _SelectedTab.values[i];
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (builder) => list[i]));
     });
 
     // String selectedPage = _selectedTab.toString();
@@ -35,35 +44,30 @@ class _BottomNavBarState extends State<BottomNavBar> {
       backgroundColor: blue, //Color(0xFFFFD233) ,
       margin: EdgeInsets.only(left: 10, right: 10),
       currentIndex: _SelectedTab.values.indexOf(_selectedTab),
-      dotIndicatorColor: black,
-      unselectedItemColor: Colors.grey[100],
+      dotIndicatorColor: Colors.white,
+      unselectedItemColor: Colors.grey[300],
       onTap: _handleIndexChanged,
       items: [
         /// Sessions
         DotNavigationBarItem(
-          icon: GestureDetector(
-            onTap: () {
-              setState(() {
-                // Navigator.pushReplacement(
-                //     context, '/session' as Route<Object?>);
-              });
-            },
-            child: Icon(
-              Icons.chat,
-            ),
+          icon: Icon(
+            Icons.chat,
           ),
           selectedColor: black,
         ),
 
-        /// Home
         DotNavigationBarItem(
-          icon: Icon(Icons.home),
+          icon: Icon(
+            Icons.home,
+          ),
           selectedColor: black,
         ),
 
         /// Profile
         DotNavigationBarItem(
-          icon: Icon(Icons.person),
+          icon: Icon(
+            Icons.person,
+          ),
           selectedColor: black,
         ),
       ],

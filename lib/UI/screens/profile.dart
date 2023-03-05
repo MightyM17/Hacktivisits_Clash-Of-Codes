@@ -21,10 +21,6 @@ class ProfilePage extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
         backgroundColor: blue,
-        leading: Icon(
-          Icons.arrow_back,
-          color: Colors.white,
-        ),
       ),
       body: Column(
         children: [
