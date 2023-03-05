@@ -81,12 +81,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 
   void getOptions(String pref) async{
-    /*String url = 'http://10.0.2.2:5000/api?pref='+pref;
+    String url = 'http://10.0.2.2:5000/api?pref='+pref;
     var response = await http.get(Uri.parse(url),);
-    print(response.body);*/
-    setState(() {
+    print(response.body);
+    /*setState(() {
       options = [97 ,20, 24 ,77 ,96 ,66 ,28, 8, 98, 84, 13, 21, 85, 52, 50, 40, 76,26,11,93];
-    });
+    });*/
   }
 
 
@@ -100,7 +100,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     print(pref.join(', '));
     getOptions(pref.join(', '));
     print(options);
-    listNames(options[1].toString());
+    //listNames(options[1].toString());
     super.initState();
   }
 
@@ -115,7 +115,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       spark_card(context,
           'https://images.unsplash.com/photo-1508341591423-4347099e1f19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80', "Jackson"),
       spark_card(context,
-          'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YmVhdXRpZnVsJTIwd29tZW58ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60', "Mike"),
+          'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YmVhdXRpZnVsJTIwd29tZW58ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60', "Ella"),
       spark_card(context,
           'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8YmVhdXRpZnVsJTIwbWVufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60', "Luke"),
     ];
@@ -154,12 +154,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         actions: [
           IconButton(
             onPressed: () {
-              /*FirebaseAuth.instance.signOut().then((value) {
+              FirebaseAuth.instance.signOut().then((value) {
                 print("Signed out");
                 Navigator.push(context,
                     MaterialPageRoute(builder: (builder) => SignInScreen()));
-              });*/
-              listNames(options[1].toString());
+              });
+              //listNames(options[1].toString());
             },
             icon: Icon(
               Icons.logout_rounded,
