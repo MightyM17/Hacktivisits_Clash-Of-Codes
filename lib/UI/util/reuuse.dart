@@ -191,34 +191,35 @@ Column displayInterests(
         shrinkWrap: true,
         // scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return Container(
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            margin: EdgeInsets.fromLTRB(0, 0, 0, 4),
-            child:ElevatedButton(
-              onPressed: (){
-                FirebaseFirestore.instance.collection("users").doc(uid).get().then((DocumentSnapshot doc) {
-                  final data = doc.data() as Map<String, dynamic>;
-                  /*setState(() {
+          return InkWell(
+            onTap: (){
+              FirebaseFirestore.instance.collection("users").doc("102").get().then((DocumentSnapshot doc) {
+                final data = doc.data() as Map<String, dynamic>;
+                /*setState(() {
                     pref = data['pref'];
                   });*/
-                  pref = data['pref'];
-                  print(pref);
-                  pref[index+1]=pref[index+1]==0?1:0;
-                  FirebaseFirestore.instance.collection('users').doc(uid).update({'pref':pref});
-                },
-                  onError: (e) => print("Error getting document: $e"),
-                );
+                pref = data['pref'];
+                print(pref);
+                pref[index+1]=pref[index+1]==0?1:0;
+                FirebaseFirestore.instance.collection('users').doc("102").update({'pref':pref});
               },
-              child: Text(
-                myInterests[index],
-                style: GoogleFonts.lato(),
+                onError: (e) => print("Error getting document: $e"),
+              );
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              margin: EdgeInsets.fromLTRB(0, 0, 0, 4),
+                child: Text(
+                  myInterests[index],
+                  style: GoogleFonts.lato(),
+                ),
+              decoration: BoxDecoration(
+                border: Border.all(color: black),
+                borderRadius: BorderRadius.circular(16),
+                color: pref[index]==1 ? Color(0xFFCFB3CD).withOpacity(0.6) : Colors.grey[200],
               ),
             ),
-            decoration: BoxDecoration(
-              border: Border.all(color: black),
-              borderRadius: BorderRadius.circular(16),
-              color: Colors.grey[200],
-            ),
+            splashColor: pink,
           );
         },
       ),
