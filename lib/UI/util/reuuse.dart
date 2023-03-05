@@ -3,7 +3,8 @@ import 'dart:ui';
 import 'package:clash_of_codes/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../screens/chat.dart';
 
 Column inputText(String text, String hintText, TextEditingController controller,
@@ -172,6 +173,8 @@ Container session_tile(BuildContext context, String name, String time) {
     ),
   );
 }
+var pref;
+String uid = (FirebaseAuth.instance.currentUser?.uid).toString();
 
 Column displayInterests(
     BuildContext context, String heading, List<String> myInterests) {
@@ -191,9 +194,25 @@ Column displayInterests(
           return Container(
             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             margin: EdgeInsets.fromLTRB(0, 0, 0, 4),
-            child: Text(
-              myInterests[index],
-              style: GoogleFonts.lato(),
+            child:ElevatedButton(
+              onPressed: (){
+                FirebaseFirestore.instance.collection("users").doc(uid).get().then((DocumentSnapshot doc) {
+                  final data = doc.data() as Map<String, dynamic>;
+                  /*setState(() {
+                    pref = data['pref'];
+                  });*/
+                  pref = data['pref'];
+                  print(pref);
+                  pref[index+1]=pref[index+1]==0?1:0;
+                  FirebaseFirestore.instance.collection('users').doc(uid).update({'pref':pref});
+                },
+                  onError: (e) => print("Error getting document: $e"),
+                );
+              },
+              child: Text(
+                myInterests[index],
+                style: GoogleFonts.lato(),
+              ),
             ),
             decoration: BoxDecoration(
               border: Border.all(color: black),

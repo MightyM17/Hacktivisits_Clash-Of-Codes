@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../constants/colors.dart';
 import '../util/reuuse.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class PublicInfoPage extends StatefulWidget {
   const PublicInfoPage({super.key});
@@ -14,7 +16,10 @@ class PublicInfoPage extends StatefulWidget {
 class _PublicInfoPageState extends State<PublicInfoPage> {
   TextEditingController _nickname = TextEditingController();
   TextEditingController _aboutMe = TextEditingController();
+  var pref;
 
+  List<String> myInterests = [''];
+  String uid = (FirebaseAuth.instance.currentUser?.uid).toString();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   var pref = [];
 
   void _fetchAllData(String id) async {
-    DocumentSnapshot ds = await FirebaseFirestore.instance.collection("users").doc('102').get();
+    DocumentSnapshot ds = await FirebaseFirestore.instance.collection("users").doc(uid).get();
     name = ds['name'];
     pref = ds['pref'];
   }
