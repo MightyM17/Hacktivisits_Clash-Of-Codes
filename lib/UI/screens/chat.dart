@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:math';
-
+import 'package:clash_of_codes/UI/widgets/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
@@ -38,11 +38,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
+    key: ValueKey<int>(0),
     body: Chat(
       messages: _messages,
       onSendPressed: _handleSendPressed,
       user: _user,
     ),
+    bottomNavigationBar: BottomNavBar(iindex: 0,),
   );
 
   void _addMessage(types.Message message) {

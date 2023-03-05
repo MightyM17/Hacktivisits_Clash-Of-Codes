@@ -1,7 +1,7 @@
 import 'package:clash_of_codes/UI/widgets/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-
+import 'package:clash_of_codes/UI/widgets/navbar.dart';
 import '../../constants/colors.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -10,6 +10,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: ValueKey<int>(3),
       // backgroundColor: ,
       appBar: AppBar(
         title: Text(
@@ -169,7 +170,7 @@ class ProfilePage extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: BottomNavBar(iindex: 2,),
     );
   }
 }

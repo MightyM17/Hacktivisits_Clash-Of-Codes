@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: '/profile',
+        initialRoute: '/splash',
         routes: {
           '/splash': (context) => const SplashScreen(),
           '/session': (context) => const SessionPage(),

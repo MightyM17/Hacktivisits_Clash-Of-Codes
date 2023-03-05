@@ -7,72 +7,76 @@ import 'package:clash_of_codes/UI/screens/session.dart';
 
 import '../../constants/colors.dart';
 
-import 'package:dot_navigation_bar/dot_navigation_bar.dart';
+import 'package:fluid_bottom_nav_bar/fluid_bottom_nav_bar.dart';
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({super.key});
+  //const BottomNavBar({super.key});
+
+  var iindex;
+  BottomNavBar({
+    iindex
+  }): this.iindex = iindex;
 
   @override
-  State<BottomNavBar> createState() => _BottomNavBarState();
+  State<BottomNavBar> createState() => _BottomNavBarState(iindex);
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  var _selectedTab = _SelectedTab.home;
+  Widget? _child;
+  _BottomNavBarState(this._index);
+  var _index;
 
-  var list = [
-    MyHomePage(),
-    HomePage(),
-    ProfilePage(),
-  ];
-
-  void _handleIndexChanged(int i) {
+  void _handleNavigationChange(int index) {
     setState(() {
-      _selectedTab = _SelectedTab.values[i];
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (builder) => list[i]));
+      switch (index) {
+        case 0:
+          _child = MyHomePage();
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (builder) => MyHomePage()));
+          print("Chat");
+          break;
+        case 1:
+          _child = HomePage();
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (builder) => HomePage()));
+          print("Home");
+          break;
+        case 2:
+          _child = ProfilePage();
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (builder) => ProfilePage()));
+          print("Profile");
+          break;
+      }
     });
-
-    // String selectedPage = _selectedTab.toString();
-    // Object routeName =
-    //     '/${selectedPage.substring(selectedPage.indexOf('.') + 1)}';
-    // Navigator.pushReplacement(context, routeName as Route<Object?>);
   }
 
   @override
   Widget build(BuildContext context) {
-    return DotNavigationBar(
-      backgroundColor: blue, //Color(0xFFFFD233) ,
-      margin: EdgeInsets.only(left: 10, right: 10),
-      currentIndex: _SelectedTab.values.indexOf(_selectedTab),
-      dotIndicatorColor: Colors.white,
-      unselectedItemColor: Colors.grey[300],
-      onTap: _handleIndexChanged,
-      items: [
-        /// Sessions
-        DotNavigationBarItem(
-          icon: Icon(
-            Icons.chat,
-          ),
-          selectedColor: black,
-        ),
-
-        DotNavigationBarItem(
-          icon: Icon(
-            Icons.home,
-          ),
-          selectedColor: black,
-        ),
-
-        /// Profile
-        DotNavigationBarItem(
-          icon: Icon(
-            Icons.person,
-          ),
-          selectedColor: black,
-        ),
+    return FluidNavBar(
+      icons: [
+        FluidNavBarIcon(
+            icon: Icons.chat,
+            backgroundColor: Color(0xFF4285F4),
+            extras: {"label": "session"}),
+        FluidNavBarIcon(
+            icon: Icons.home,
+            backgroundColor: Color(0xFFEC4134),
+            extras: {"label": "home"}),
+        FluidNavBarIcon(
+            icon: Icons.person,
+            backgroundColor: Color(0xFFFCBA02),
+            extras: {"label": "profile"}),
       ],
+      defaultIndex: _index,
+      onChange: _handleNavigationChange,
+      style: FluidNavBarStyle(iconUnselectedForegroundColor: Colors.white),
+      scaleFactor: 1.5,
+      itemBuilder: (icon, item) =>
+          Semantics(
+            label: icon.extras!["label"],
+            child: item,
+          ),
     );
   }
 }
-
-enum _SelectedTab { session, home, profile }
