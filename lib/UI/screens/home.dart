@@ -129,7 +129,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           ),
         ],
       ),
-      extendBody: true,
+      // extendBody: true,
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 8.0),
         child: BottomNavBar(),

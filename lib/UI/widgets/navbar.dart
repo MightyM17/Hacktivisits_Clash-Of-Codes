@@ -22,20 +22,36 @@ class _BottomNavBarState extends State<BottomNavBar> {
     setState(() {
       _selectedTab = _SelectedTab.values[i];
     });
+
+    // String selectedPage = _selectedTab.toString();
+    // Object routeName =
+    //     '/${selectedPage.substring(selectedPage.indexOf('.') + 1)}';
+    // Navigator.pushReplacement(context, routeName as Route<Object?>);
   }
 
   @override
   Widget build(BuildContext context) {
     return DotNavigationBar(
+      backgroundColor: blue, //Color(0xFFFFD233) ,
       margin: EdgeInsets.only(left: 10, right: 10),
       currentIndex: _SelectedTab.values.indexOf(_selectedTab),
-      dotIndicatorColor: Colors.white,
-      unselectedItemColor: Colors.grey[300],
+      dotIndicatorColor: black,
+      unselectedItemColor: Colors.grey[100],
       onTap: _handleIndexChanged,
       items: [
         /// Sessions
         DotNavigationBarItem(
-          icon: Icon(Icons.chat),
+          icon: GestureDetector(
+            onTap: () {
+              setState(() {
+                // Navigator.pushReplacement(
+                //     context, '/session' as Route<Object?>);
+              });
+            },
+            child: Icon(
+              Icons.chat,
+            ),
+          ),
           selectedColor: black,
         ),
 
@@ -55,4 +71,4 @@ class _BottomNavBarState extends State<BottomNavBar> {
   }
 }
 
-enum _SelectedTab { session, home, person }
+enum _SelectedTab { session, home, profile }
