@@ -82,7 +82,7 @@ GestureDetector singInUp(BuildContext context, bool isLogin, Function clickMe) {
   );
 }
 
-Stack spark_card(BuildContext context, String imgUrl, var name) {
+Stack spark_card(BuildContext context, String imgUrl, String name, String about) {
   return Stack(
     children: [
       Container(
@@ -132,7 +132,7 @@ Stack spark_card(BuildContext context, String imgUrl, var name) {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'lorem ipsum aaaaa aaaaaa aaaaa aaaaa aaaaa aaaa aaaaa aaaaaa',
+                  about,
                   style: GoogleFonts.lato(
                     fontSize: 16,
                     color: Colors.grey,
