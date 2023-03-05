@@ -101,7 +101,7 @@ Stack spark_card(
         ),
       ),
       BackdropFilter(
-        filter: new ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
+        filter: new ImageFilter.blur(sigmaX: 6.0, sigmaY: 6.0),
         child: Container(
           width: MediaQuery.of(context).size.width - 48,
           height: MediaQuery.of(context).size.height - 300,
