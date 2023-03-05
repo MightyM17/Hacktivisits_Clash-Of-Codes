@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.clash_of_codes">
    <application
-        android:label="clash_of_codes"
+        android:label="Spark"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
