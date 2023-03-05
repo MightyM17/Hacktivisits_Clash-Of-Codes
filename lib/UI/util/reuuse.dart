@@ -82,7 +82,8 @@ GestureDetector singInUp(BuildContext context, bool isLogin, Function clickMe) {
   );
 }
 
-Stack spark_card(BuildContext context, String imgUrl, String name, String about) {
+Stack spark_card(
+    BuildContext context, String imgUrl, String name, String about) {
   return Stack(
     children: [
       Container(
@@ -169,5 +170,40 @@ Container session_tile(BuildContext context, String name, String time) {
         ),
       ),
     ),
+  );
+}
+
+Column displayInterests(
+    BuildContext context, String heading, List<String> myInterests) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        heading,
+        style: GoogleFonts.lato(),
+      ),
+      SizedBox(height: 8),
+      ListView.builder(
+        itemCount: myInterests.length,
+        shrinkWrap: true,
+        // scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          return Container(
+            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            margin: EdgeInsets.fromLTRB(0, 0, 0, 4),
+            child: Text(
+              myInterests[index],
+              style: GoogleFonts.lato(),
+            ),
+            decoration: BoxDecoration(
+              border: Border.all(color: black),
+              borderRadius: BorderRadius.circular(16),
+              color: Colors.grey[200],
+            ),
+          );
+        },
+      ),
+      SizedBox(height: 12),
+    ],
   );
 }
