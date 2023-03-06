@@ -1,8 +1,11 @@
-# clash_of_codes
+# Spark⚡
 
 A new Flutter project.
 
 ## About 
+
+Created an ML-powered blind dating app with Flutter, Firebase and Scikit. It analyzes your data and uses matching
+algorithms to pair you with potential matches that share your interests, values, and personality traits.
 
 ## Screens
 
