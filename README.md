@@ -2,15 +2,18 @@
 
 A new Flutter project.
 
-## Getting Started
+## About 
 
-This project is a starting point for a Flutter application.
+## Screens
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Splash Screen](assets/spark%20ss/spark%20splash%20screen.jpg)
+![Onboarding Page 1](assets/spark%20ss/spark%20onboarding%20screen%201.jpg)
+![Onboarding Page 2](assets/spark%20ss/spark%20onboarding%20screen%202.jpg)
+![Onboarding Page 3](assets/spark%20ss/spark%20onboarding%20screen%203.jpg)
+![Login Page](assets/spark%20ss/spark%20login%20screen.jpg)
+![Sign Up Page](assets/spark%20ss/spark%20register%20screen.jpg)
+![Home Page](assets/spark%20ss/spark%20home%20screen.jpg)
+![Profile Page](assets/spark%20ss/spark%20profile%20screen.jpg)
+![Public Profile Page](assets/spark%20ss/spark%20profile-public%20profile%20screen.jpg)
+![Session Page](assets/spark%20ss/spark%20session%20screen.jpg)
+![Session Chat Page](assets/spark%20ss/spark%20session-chat%20screen.jpg)
