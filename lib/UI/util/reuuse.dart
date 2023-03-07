@@ -178,7 +178,7 @@ List<dynamic> pref=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 String uid = (FirebaseAuth.instance.currentUser?.uid).toString();
 
 Column displayInterests(
-    BuildContext context, String heading, List<String> myInterests) {
+    BuildContext context, String heading, List<String> myInterests, List<int> val) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -194,15 +194,11 @@ Column displayInterests(
         itemBuilder: (context, index) {
           return InkWell(
             onTap: (){
-              FirebaseFirestore.instance.collection("users").doc("102").get().then((DocumentSnapshot doc) {
+              FirebaseFirestore.instance.collection("users").doc(uid).get().then((DocumentSnapshot doc) {
                 final data = doc.data() as Map<String, dynamic>;
-                /*setState(() {
-                    pref = data['pref'];
-                  });*/
                 pref = data['pref'];
-                print(pref);
-                pref[index+1]=pref[index+1]==0?1:0;
-                FirebaseFirestore.instance.collection('users').doc("102").update({'pref':pref});
+                pref[val[index]]=pref[val[index]]==0?1:0;
+                FirebaseFirestore.instance.collection('users').doc(uid).update({'pref':pref});
               },
                 onError: (e) => print("Error getting document: $e"),
               );
@@ -217,7 +213,7 @@ Column displayInterests(
               decoration: BoxDecoration(
                 border: Border.all(color: black),
                 borderRadius: BorderRadius.circular(16),
-                color: pref[index]==1 ? Color(0xFFCFB3CD).withOpacity(0.6) : Colors.grey[200],
+                color: pref[val[index]]==1 ? Color(0xFFCFB3CD).withOpacity(0.6) : Colors.grey[200],
               ),
             ),
             splashColor: pink,

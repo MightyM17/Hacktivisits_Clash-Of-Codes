@@ -54,16 +54,16 @@ class _PublicInfoPageState extends State<PublicInfoPage> {
               ),
               SizedBox(height: 10),
               displayInterests(
-                  context, 'Education', ['bachelors', 'masters', 'phd']),
+                  context, 'Education', ['bachelors', 'masters', 'phd'], [0,1,2]),
               displayInterests(context, 'Food',
-                  ['continental', 'indian', 'chinese', 'italian']),
-              displayInterests(context, 'Music', ['Rock', 'Jazz', 'EDM', 'Pop']),
+                  ['continental', 'indian', 'chinese', 'italian'], [3,4,5,6]),
+              displayInterests(context, 'Music', ['Rock', 'Jazz', 'EDM', 'Pop'], [7,8,9,10]),
               displayInterests(
-                  context, 'Gaming', ['Minecraft', 'Valorant', 'Fortnite']),
+                  context, 'Gaming', ['Minecraft', 'Valorant', 'Fortnite'], [11,12,13]),
               displayInterests(
-                  context, 'Shows', ['Friends', 'B99', 'GoT', 'Suits']),
+                  context, 'Shows', ['Friends', 'B99', 'GoT', 'Suits'], [14,15,16,17]),
               displayInterests(context, 'Date preference',
-                  ['Picnic', 'Walk', 'Dance', 'Hike']),
+                  ['Picnic', 'Walk', 'Dance', 'Hike'], [18,19,20,21]),
               displayInterests(context, 'Other interests', [
                 'astrology',
                 'fashion',
@@ -73,7 +73,7 @@ class _PublicInfoPageState extends State<PublicInfoPage> {
                 'science',
                 'tech',
                 'writing'
-              ]),
+              ], [22,23,24,25,26,27,28,29]),
             ],
           ),
         ),
