@@ -10,6 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 //import 'package:clash_of_codes/realtime/managedb.dart';
 import 'package:swipeable_card_stack/swipeable_card_stack.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'dart:developer';
 import 'package:flutter/cupertino.dart';
@@ -36,47 +37,95 @@ class DataRequiredForBuild {
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   String uid = (FirebaseAuth.instance.currentUser?.uid).toString();
   var options = [];
-  String name='Smit';
+  String name = 'Smit';
   late String newname = "def";
   int counter = 4;
   var pref = [];
-  List<String> sugg = ['1', '2', '3', '4', '5', '1', '2', '3', '4', '5', '1', '2', '3', '4', '5', '1', '2', '3', '4', '5'];
+  List<String> sugg = [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5'
+  ];
 
   Future<DataRequiredForBuild> _fetchAllData(String id) async {
-    DocumentSnapshot ds = await FirebaseFirestore.instance.collection("users").doc(uid).get();
+    DocumentSnapshot ds =
+        await FirebaseFirestore.instance.collection("users").doc(uid).get();
     name = ds["name"];
-    pref = ds ["pref"];
+    pref = ds["pref"];
     /*String url = 'http://10.0.2.2:5000/api?pref='+pref;
     var response = await http.get(Uri.parse(url),);
     print(response.body);*/
     setState(() {
-      options = [97 ,20, 24 ,77 ,96 ,66 ,28, 8, 98, 84, 13, 21, 85, 52, 50, 40, 76,26,11,93];
+      options = [
+        97,
+        20,
+        24,
+        77,
+        96,
+        66,
+        28,
+        8,
+        98,
+        84,
+        13,
+        21,
+        85,
+        52,
+        50,
+        40,
+        76,
+        26,
+        11,
+        93
+      ];
     });
-    for(int i=0;i<5;i++)
-      {
-        DocumentSnapshot ds = await FirebaseFirestore.instance.collection("users").doc(options[i].toString()).get();
-        setState(() {
-          sugg[i] = ds["name"];
-        });
-      }
+    for (int i = 0; i < 5; i++) {
+      DocumentSnapshot ds = await FirebaseFirestore.instance
+          .collection("users")
+          .doc(options[i].toString())
+          .get();
+      setState(() {
+        sugg[i] = ds["name"];
+      });
+    }
     return DataRequiredForBuild(name: name, pref: pref);
   }
 
   void addToLiked(String id) async {
-    FirebaseFirestore.instance.collection("users").doc(uid).get().then((DocumentSnapshot doc) {
-      final data = doc.data() as Map<String, dynamic>;
-      var li;
-      print(data['likes']);
-      if(data['likes'] == null)
-        li = [id.toString()];
-      else
-        {
+    FirebaseFirestore.instance.collection("users").doc(uid).get().then(
+      (DocumentSnapshot doc) {
+        final data = doc.data() as Map<String, dynamic>;
+        var li;
+        print(data['likes']);
+        if (data['likes'] == null)
+          li = [id.toString()];
+        else {
           print("hi");
           li = data['likes'];
           li.add(id);
         }
-      FirebaseFirestore.instance.collection('users').doc(uid).update({'likes': li});
-    },
+        FirebaseFirestore.instance
+            .collection('users')
+            .doc(uid)
+            .update({'likes': li});
+      },
       onError: (e) => print("Error getting document: $e"),
     );
   }
@@ -84,7 +133,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late Future<DataRequiredForBuild> _dataRequiredForBuild;
   @override
   void initState() {
-
     String uid = (FirebaseAuth.instance.currentUser?.uid).toString();
     print(uid);
     _dataRequiredForBuild = _fetchAllData(uid);
@@ -124,15 +172,21 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
     // List of images
     List<Stack> match_cards = [
-      spark_card(context,
+      spark_card(
+          context,
           'https://images.unsplash.com/photo-1508341591423-4347099e1f19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80',
-          sugg[0], aboutme[0]),
-      spark_card(context,
+          sugg[0],
+          aboutme[0]),
+      spark_card(
+          context,
           'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YmVhdXRpZnVsJTIwd29tZW58ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60',
-          sugg[1], aboutme[1]),
-      spark_card(context,
+          sugg[1],
+          aboutme[1]),
+      spark_card(
+          context,
           'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8YmVhdXRpZnVsJTIwbWVufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60',
-          sugg[2], aboutme[2]),
+          sugg[2],
+          aboutme[2]),
     ];
 
     return Scaffold(
@@ -186,47 +240,55 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ],
       ),
       body: FutureBuilder<DataRequiredForBuild>(
-        future: _dataRequiredForBuild,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SwipeableCardsSection(
-                  cardController: _cardController,
-                  context: context,
-                  items: match_cards,
-                  onCardSwiped: (dir, index, widget) {
-                    // adding the next card
-                    if (counter <= 4) {
-                      //_fetchAllData(options[index].toString());
-                      _cardController.addItem(spark_card(context,
-                          "https://images.unsplash.com/photo-1583147610149-78ac5cb5a303?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-                          sugg[counter], aboutme[counter]));
-                      counter++;
-                    }
+          future: _dataRequiredForBuild,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SwipeableCardsSection(
+                    cardController: _cardController,
+                    context: context,
+                    items: match_cards,
+                    onCardSwiped: (dir, index, widget) {
+                      // adding the next card
+                      if (counter <= 4) {
+                        //_fetchAllData(options[index].toString());
+                        _cardController.addItem(spark_card(
+                            context,
+                            "https://images.unsplash.com/photo-1583147610149-78ac5cb5a303?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+                            sugg[counter],
+                            aboutme[counter]));
+                        counter++;
+                      }
 
-                    if (dir == Direction.left) {
-                      print('disliked');
-                    } else if (dir == Direction.right) {
-                      addToLiked(options[index].toString());
-                      print('liked');
-                    }
-                  },
-                  enableSwipeUp: false,
-                  enableSwipeDown: false,
+                      if (dir == Direction.left) {
+                        print('disliked');
+                      } else if (dir == Direction.right) {
+                        addToLiked(options[index].toString());
+                        print('liked');
+                      }
+                    },
+                    enableSwipeUp: false,
+                    enableSwipeDown: false,
+                  ),
+                ],
+              );
+            } else
+              return Scaffold(
+                backgroundColor: Colors.grey[200],
+                body: Center(
+                  child: SpinKitCircle(
+                    color: blue,
+                    size: 50.0,
+                  ),
                 ),
-              ],
-            );
-          }
-          else
-            return Scaffold(
-              body: Text("BRRRRRRRRR"),
-            );
-        }
-      ),
+              );
+          }),
       // extendBody: true,
-      bottomNavigationBar: BottomNavBar(iindex: 1,),
+      bottomNavigationBar: BottomNavBar(
+        iindex: 1,
+      ),
     );
   }
 }

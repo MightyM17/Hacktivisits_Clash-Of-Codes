@@ -51,10 +51,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                 inputText('Name', 'eg: Het Nakhua', _name, false),
                 inputText('Email', 'eg: hetnakhua@gmail.com', _email, false),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // heading
                 RichText(
                   text: TextSpan(
                     style: TextStyle(color: Colors.black, fontSize: 16),
@@ -93,18 +89,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     filled: true,
                   ),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
-              ],
-            ),
+                SizedBox(height: 20),
                 inputText('Location', 'eg: India', _loc, false),
                 RichText(
                   text: TextSpan(
                     style: TextStyle(color: Colors.black, fontSize: 16),
                     children: [
                       TextSpan(
-                        text: 'Mobile',
+                        text: 'Age',
                       ),
                       WidgetSpan(
                         child: Transform.translate(
@@ -137,7 +129,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     filled: true,
                   ),
                 ),
-                SizedBox(height: 8,),
+                SizedBox(height: 20),
                 inputText('Gender', 'eg: Male', _gen, false),
                 inputText('Password', 'eg: #het493', _pass, true),
                 inputText('Confirm Password', 'eg: #het493', _cpass, true),
@@ -157,11 +149,45 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     String uid =
                         (FirebaseAuth.instance.currentUser?.uid).toString();
                     print(_error);
-                    addUser(_name.text, _email.text, uid, _loc.text, int.parse(_age.text), _gen.text, int.parse(_mob.text), [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], []);
+                    addUser(_name.text, _email.text, uid, _loc.text,
+                        int.parse(_age.text), _gen.text, int.parse(_mob.text), [
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0
+                    ], []);
                     Navigator.push(context,
                         MaterialPageRoute(builder: (builder) => HomePage()));
                   }).onError((error, stackTrace) {
-                    setState(() => _error = error.toString().substring(error.toString().indexOf(']')+2));
+                    setState(() => _error = error
+                        .toString()
+                        .substring(error.toString().indexOf(']') + 2));
                     print(_error);
                   });
                 }),
